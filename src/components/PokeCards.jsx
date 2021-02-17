@@ -1,44 +1,30 @@
-import React, { useState, useEffect } from "react";
-import { mockPokemonsData } from "../mock/pokeData";
+import React, { Component } from "react";
 
-const PokeCards = () => {
-  //const pokemon = mockPokemonsData;
-  const [pokemons, setPokemons] = useState("");
-  const [names, setNames] = useState("");
-  const list = [];
-
-  useEffect(() => {
-    const fetchData = () => {
-      const pokemons = mockPokemonsData;
-      pokemons.map((poke, i) => {
-        list.push([poke.name]);
-        setPokemons(list);
-        console.log("POKEDEMONS: ", pokemons);
-      });
+class PokeCards extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showShiny: false
     };
-    fetchData();
-  }, []);
-  return (
-    <div>
-      <h1>POKECARDS</h1>
-      {/* <h1>{pokemon[0]['name']}</h1> */}
-      <h1>Pokemons! {pokemons}</h1>
+  }
 
-      {/* <div>
-          {pokemons.map(poke, i => (
-              <Pokemon
-                pokemon={poke}
-                key={i}
-              />
-          ))}
-        </div> */}
-
-      {/* <div>
-        <img src={mockPokemonData.sprites.front_default} />
-        <img src={mockPokemonData.sprites.front_shiny} />
-      </div>
-      <a href={mockPokemonData.video}>video click here</a> */}
-    </div>
-  );
-};
+  render() {
+    const poke = this.props.poke;
+    return (
+      <tr onClick={() => this.setState({ showShiny: !this.state.showShiny })}>
+        <td>
+          <h1>
+            <a href={poke.video}>{poke.name}</a>
+          </h1>
+          <h1>{poke.name}</h1>
+        </td>
+        {this.state.showShiny ? (
+          <td>{pokemon.sprites.front_default}</td>
+        ) : (
+          <td>{pokemon.sprites.back_shiny} </td>
+        )}
+      </tr>
+    );
+  }
+}
 export default PokeCards;
