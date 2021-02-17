@@ -11,12 +11,8 @@ const PokeCards = () => {
     const fetchData = () => {
       const pokemons = mockPokemonsData;
       pokemons.map((poke, i) => {
-        console.log("pokeBlue: ", poke, i);
-        list.push([poke.name + ""]);
+        list.push([poke.name]);
         setPokemons(list);
-        setNames(poke.name);
-        console.log("DETAILS", name.name);
-
         console.log("POKEDEMONS: ", pokemons);
       });
     };
@@ -27,7 +23,6 @@ const PokeCards = () => {
       <h1>POKECARDS</h1>
       {/* <h1>{pokemon[0]['name']}</h1> */}
       <h1>Pokemons! {pokemons}</h1>
-      <h1>Name! {names}</h1>
 
       {/* <div>
           {pokemons.map(poke, i => (
@@ -47,20 +42,3 @@ const PokeCards = () => {
   );
 };
 export default PokeCards;
-
-const myUsers = [
-  { name: "shark", likes: "ocean" },
-  { name: "turtle", likes: "pond" },
-  { name: "otter", likes: "fish biscuits" }
-];
-
-const usersByLikes = myUsers.map((item) => {
-  const container = {};
-
-  container[item.name] = item.likes;
-  container.age = item.name.length * 10;
-
-  return container;
-});
-
-console.log(usersByLikes);
